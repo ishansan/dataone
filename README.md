@@ -8,10 +8,10 @@
 5. The server rejects or saves the field depending if all required fields are filled
 6. AngularJS has been used to call REST APIs on the frontend
 7. Materialize has been used to provide MATERIAL UI
-8. The databse is prepopulated with 11 fields
+8. The database is prepopulated with 11 fields
 
 **Instructions to run the Code:**
-1. Run command - npm install package.json
+1. Run command - npm install package.json if "node_modules" folder is not already created
 2. Node modules will be installed and a folder "node_modules" will be created in the root directory
 3. Start server by navigation to /server and Running command - node server.js
 
