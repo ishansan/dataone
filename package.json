@@ -15,12 +15,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dataoneio/full-stack-challenge.git"
+    "url": "git-https://github.com/ishansan/dataone.git"
   },
   "author": "Ishan Sharma",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dataoneio/full-stack-challenge/issues"
+    "url": "https://github.com/ishansan/dataone/issues"
   },
-  "homepage": "https://github.com/dataoneio/full-stack-challenge#readme"
+  "homepage": "https://github.com/ishansan/dataone#readme"
 }
