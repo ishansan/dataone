@@ -1,0 +1,375 @@
+<html>
+	<head>
+		<title>WarnerBros Movies</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" href="http://brandongaille.com/wp-content/uploads/2013/07/Warner-Bros-Company-Logo1.jpg">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:100,400,300,600' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="./style.css">
+	</head>
+	<body ng-app="myApp">
+	
+		<nav class="white" role="navigation">
+			<div class="nav-wrapper">
+				<a id="logo-container" href="/" class="brand-logo center"><img src="http://brandongaille.com/wp-content/uploads/2013/07/Warner-Bros-Company-Logo1.jpg" alt="logo"></a>
+			</div>
+		</nav>
+
+		<div id="index-banner" class="parallax-container">
+			<div class="section no-pad-bot">
+				<div class="container">
+					
+					<br><br><br><br>
+					<h1 class="header center text-lighten-2 main-font weight400 cwhite">WarnerBros Movies</h1>
+					<div class="row center">
+						<h5 class="header col s12 light main-font cwhite">Search trending movies or create your own now</h5>
+					</div>
+					<br><br>
+
+				</div>
+			</div>
+			<div class="parallax"><img src="./images/img.png" alt="Background"></div>
+		</div>
+
+
+		<div class="container">
+			<div class="section">
+
+			<!-- UPDATE MOVIE -->
+			<div class="row ifnomovie hide" id="update_movie_dialog">
+
+				<h5 class="header center text-lighten-2 main-font weight400 cgray">Update this movie</h5>
+				<div id="update_box" ng-controller="updateCtrl" data-id="">
+					<div class="col l4">
+						<input type="text" placeholder="Movie name *" class="main-font" autofocus="true" ng-model="input_updatemoviename_model" id="input_updatemoviename">
+					</div>
+					<div class="col l4">
+						<input type="text" placeholder="Cover Image URL" class="main-font" ng-model="input_updateimageurl_model" id="input_updateimageurl">
+					</div>
+					<div class="col l4">
+			    		<input type="text" placeholder="Release date *" class="main-font datepicker" ng-model="input_updatereleasedate_model" id="input_updatereleasedate">
+			    	</div>
+			    	<div class="col l4">
+						<select class="browser-default main-font" ng-model="input_updategenre_model" id="input_updategenre">
+					      <option value="" disabled selected class="main-font">Choose a Genre</option>
+					      <option value="horror" class="main-font">Horror</option>
+					      <option value="thriller" class="main-font">Thriller</option>
+					      <option value="western" class="main-font">Western</option>
+					      <option value="action" class="main-font">Action</option>
+					      <option value="adventure" class="main-font">Adventure</option>
+					      <option value="animation" class="main-font">Animation</option>
+					      <option value="romance" class="main-font">Romance</option>
+					      <option value="drama" class="main-font">Drama</option>
+					    </select>
+					</div>
+					 <div class="col l4" ng-controller="updatedirectorCtrl">
+					 	 <select class="browser-default main-font capitalize" id="updatedirector_ctrl" ng-model="updatedirector_model">
+						      <option ng-repeat="x in updatedirector_records" value="{{x.name}}" class="main-font capitalize">{{x.name}}</option>
+						      <option value="" disabled selected class="main-font">Choose a Director *</option>
+			    		</select>   
+			    	 </div>
+			    	<div class="col l4" style="padding-top:10px;">
+			    	<button class="main-font button-growth" ng-click="btnupdateMovie()">Update Movie</button>
+			    	<button class="main-font button-growth" style="margin-left:7px;background-color:#cf2121;color:white;" ng-click="deleteMovie()">Delete Movie</button>
+			    	</div>
+				</div>
+			</div>
+			<!-- ADD MOVIE  -->
+			<div class="row" id="create_movie_dialog">
+			<h5 class="header center text-lighten-2 main-font weight400 cgray">Create new movie</h5>
+
+			<div id="add_new_box" ng-controller="dataCtrl">
+				<div class="col l4">
+				<input type="text" placeholder="Movie name *" class="main-font" autofocus="true" ng-model="input_moviename">
+				</div>
+				<div class="col l4">
+				<input type="text" placeholder="Cover Image URL" class="main-font" ng-model="input_imageurl">
+				</div>
+				<div class="col l4">
+			    	<input type="text" placeholder="Release date *" class="main-font datepicker" ng-model="input_releasedate">
+			    </div>
+				<div class="col l4">
+				<select class="browser-default main-font" ng-model="input_genre">
+			      <option value="" disabled selected class="main-font">Choose a Genre</option>
+			      <option value="horror" class="main-font">Horror</option>
+			      <option value="thriller" class="main-font">Thriller</option>
+			      <option value="western" class="main-font">Western</option>
+			      <option value="action" class="main-font">Action</option>
+			      <option value="adventure" class="main-font">Adventure</option>
+			      <option value="animation" class="main-font">Animation</option>
+			      <option value="romance" class="main-font">Romance</option>
+			      <option value="drama" class="main-font">Drama</option>
+			    </select>
+			    </div>
+
+			    <div class="col l4" ng-controller="directorCtrl">
+			    <select class="browser-default main-font capitalize" id="director_ctrl" ng-model="director_model">
+			      <option ng-repeat="x in director_records" value="{{x.name}}" class="main-font capitalize">{{x.name}}</option>
+			      <option value="" disabled selected class="main-font">Choose a Director *</option>
+			    </select>
+			    </div>
+			   
+			    <div class="col l4" >
+			    	<dl class="dropdown browser-default"> 
+  						<dt>
+						    <a>
+						      <span class="hida main-font cblack">Choose actors *</span>    
+						      <p class="multiSel" id="collect_info"></p>  
+						    </a>
+					    </dt>
+					  	<dd>
+					        <div class="mutliSelect">
+					            <ul ng-controller="actorCtrl" id="actor_ctrl" ng-model="actor_ctrl">
+					            </ul>
+					        </div>
+					    </dd>
+					</dl>
+			    </div>
+			    <div class="col l4">
+			    	<button class="main-font button-growth" ng-click="createMovie()">Create Movie</button>
+			    </div>
+			</div>
+
+			</div>
+			<h5 class="header center text-lighten-2 main-font weight400 cgray ifnomovie">Trending Movies</h5>
+			<div class="row ifnomovie" id="all_movies" ng-controller="myCtrl">
+
+				<div class="col l6 m4" ng-repeat="x in movies_records">
+					<div class="icon-block" data-id="{{x.$loki}}">
+						<div class="brow" style="background:url({{x.coverimage}});background-size:cover;">
+
+						</div>
+						<div class="crow">
+							<h5 class="center main-font cfb">{{x.name}}</h5>
+							<span class="main-font center"><span class="weight400 cgray capitalize">Directed By:</span> <span class="capitalize">{{x.director}}</span></span>
+							<span class="main-font" style="float:left;"><span class="weight400 cgray capitalize">Genre:</span> <span class="capitalize">{{x.genre}}</span></span>
+							<span class="main-font" style="float:right;"><span class="weight400 cgray">Released on:</span> {{x.release_date}}</span><br>
+							<span class="main-font"><span class="weight400 cgray">Cast:</span> <span class="main-font capitalize" ng-repeat="y in x.actors"> &bull; {{y}}</span></span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			  <ul class="pagination ifnomovie" style="text-align:center;" id="pagination_numbers">
+			  	<li class="main-font cgray">Pages: </li>
+			  </ul>
+           
+			</div>
+		</div>
+
+		<!-- scripts -->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script type="text/javascript" src="./app.js"></script>
+		<script type="text/javascript">
+		//AngularJS
+		var app = angular.module('myApp',[]);
+		app.controller('myCtrl',['$scope','$http',function($scope,$http){
+			var get_value = <%- JSON.stringify(data) %>;
+			if(get_value.length!=0)
+			{
+				$scope.movies_records = [];
+				for(var i=0;i<get_value.length;i++)
+				{
+					$scope.movies_records.push(get_value[i]);
+				}
+			}else
+			{
+				$(".ifnomovie").remove();
+			}
+		}]);
+		app.controller('directorCtrl',['$scope','$http',function($scope,$http){
+			$http({
+				method:"GET",
+				url:"/ops/getdirectors"
+			}).then(function successCallback(response){
+				var data = response.data;
+				if(data)
+				{
+					data = data.data;
+					$scope.director_records = [];
+					for(var i=0;i<data.length;i++)
+					{
+						$scope.director_records.push({id:data[i].$loki,name:data[i].name});
+					}
+				}
+			},function errorCallback(response){
+				alert("Some Error Occured. Please try again later.");
+			});
+		}]);
+		app.controller('updatedirectorCtrl',['$scope','$http',function($scope,$http){
+			$http({
+				method:"GET",
+				url:"/ops/getdirectors"
+			}).then(function successCallback(response){
+				var data = response.data;
+				if(data)
+				{
+					data = data.data;
+					$scope.updatedirector_records = [];
+					for(var i=0;i<data.length;i++)
+					{
+						$scope.updatedirector_records.push({id:data[i].$loki,name:data[i].name});
+					}
+				}
+			},function errorCallback(response){
+				alert("Some Error Occured. Please try again later.");
+			});
+		}]);
+		app.controller('actorCtrl',['$scope','$http',function($scope,$http){
+			$http({
+				method:"GET",
+				url:"/ops/getactors"
+			}).then(function successCallback(response){
+				var data = response.data;
+				if(data)
+				{
+					data = data.data;
+					for(var i=0;i<data.length;i++)
+					{
+						$("#actor_ctrl").append('<li><input data-text="'+data[i].name+'" type="checkbox" value="'+data[i].$loki+'" data-id="'+data[i].$loki+'" class="filled-in" id="check'+i+'"/><label for="check'+i+'" class="main-font capitalize">'+data[i].name+'</label></li>');
+					}
+				}
+			},function errorCallback(response){
+				alert("Some Error Occured. Please try again later.");
+			});
+		}]);
+		app.controller('updateactorCtrl',['$scope','$http',function($scope,$http){
+			$http({
+				method:"GET",
+				url:"/ops/getactors"
+			}).then(function successCallback(response){
+				var data = response.data;
+				if(data)
+				{
+					data = data.data;
+					for(var i=0;i<data.length;i++)
+					{
+						$("#update_actor_ctrl").append('<li><input data-text="'+data[i].name+'" type="checkbox" value="'+data[i].$loki+'" data-id="'+data[i].$loki+'" class="filled-in" id="check'+i+'"/><label for="check'+i+'" class="main-font capitalize">'+data[i].name+'</label></li>');
+					}
+				}
+			},function errorCallback(response){
+				alert("Some Error Occured. Please try again later.");
+			});
+		}]);
+		app.controller("dataCtrl",['$scope','$http',function($scope,$http){
+			$scope.createMovie = function()
+			{
+				var moviename = $scope.input_moviename;
+				var coverimg = $scope.input_imageurl;
+				var releasedate = $scope.input_releasedate;
+				var genre = $scope.input_genre;
+				var director = $("#director_ctrl").val();;
+				var actors_id = [];
+				if(!coverimg)
+				{
+					coverimg="./images/default-img.jpg";
+				}
+				if(!genre)
+				{
+					genre="None";
+				}
+				$(".collect_info_span").each(function()
+				{
+					var movie_name = $(this).attr("data-text");
+					movie_name = movie_name.slice(0,-1);
+					actors_id.push(movie_name);
+
+				});
+				if(actors_id.length==0)
+				{
+					actors_id="";
+				}
+				var data = {"moviename":moviename,"coverimg":coverimg,"releasedate":releasedate,"genre":genre,"actors":actors_id,"director":director};
+
+				//angularPOST
+				$http.post("/ops/createmovie",data,{'Content-Type': 'application/json'}).then(function(response){
+					var response = response.data.status;
+					if(response==0)
+					{
+						alert("Required Field Missing. Please fill all required fields");
+					}else
+					{
+						location.reload();
+					}
+				},function(response)
+				{
+					alert("Some Error Occured. Please try again later.");
+				});
+			}
+		}]);
+		app.controller("updateCtrl",['$scope','$http',function($scope,$http){
+			
+			$scope.btnupdateMovie = function()
+			{
+				var moviename = $("#input_updatemoviename").val();
+				var coverimg = $("#input_updateimageurl").val();
+				var releasedate = $("#input_updatereleasedate").val();
+				var genre = $("#input_updategenre").val();
+				var director = $("#updatedirector_ctrl").val();
+				if(!coverimg)
+				{
+					coverimg="./images/default-img.jpg";
+				}
+				if(!genre)
+				{
+					genre="None";
+				}
+				
+				$http.post("/ops/getmovieId",{loki:$("#update_box").attr("data-id")},{'Content-Type': 'application/json'}).then(function(response){
+					var resp = response.data.data[0];
+					var response = response.data.status;
+					if(response==0)
+					{
+						alert("Some Error Occured. Please try again later.");
+					}else
+					{
+						var data = {"moviename":moviename,"coverimg":coverimg,"releasedate":releasedate,"genre":genre,"actors":resp.actors,"director":director,"$loki":resp.$loki,"meta":resp.meta};
+						console.log(data);
+						//angularPOST
+						$http.post("/ops/updatemovie",data,{'Content-Type': 'application/json'}).then(function(response){
+							console.log(response);
+							var response = response.data.status;
+							if(response==0)
+							{
+								alert("Required Field Missing. Please fill all required fields");
+							}else
+							{
+								location.reload();
+							}
+						},function(response)
+						{
+							alert("Some Error Occured. Please try again later.");
+						});
+
+					}
+				},function(response){
+					alert("Some Error Occured. Please try again later.");
+				});
+				
+			}
+
+			$scope.deleteMovie = function()
+			{
+				var delete_loki = parseInt($("#update_box").attr("data-id"));
+				$http.post("/ops/deletemovie",{loki:delete_loki},{'Content-Type': 'application/json'}).then(function(response){
+					var response = response.data.status;
+					if(response==0)
+					{
+						alert("This movie does not exist.");
+					}else
+					{
+						location.reload();
+					}
+				},function(response){
+					alert("Some Error Occured. Please try again later.");
+				});
+			}
+		}]);	
+		</script>
+	</body>
+</html>

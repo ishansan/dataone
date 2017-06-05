@@ -1,0 +1,26 @@
+{
+  "name": "full-stack-challenge",
+  "version": "1.0.0",
+  "description": "DataOne",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "lokijs": "^1.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dataoneio/full-stack-challenge.git"
+  },
+  "author": "Ishan Sharma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dataoneio/full-stack-challenge/issues"
+  },
+  "homepage": "https://github.com/dataoneio/full-stack-challenge#readme"
+}

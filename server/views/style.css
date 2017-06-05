@@ -1,0 +1,285 @@
+.brand-logo>img
+{
+	width: 60px;
+}
+.main-font
+{
+	font-family: 'Open Sans',sans-serif;
+}
+.weight300
+{
+	font-weight: 300;
+}
+.weight400
+{
+	font-weight:: 400;
+}
+.parallax>img
+{
+	width: 100% !important;
+}
+.cwhite
+{
+	color:white;
+}
+.cgray
+{
+	color:gray;
+}
+.cfb
+{
+	color:#3b5998;
+}
+.icon-block>.crow>span
+{
+	font-size: 13px;
+}
+.center
+{
+	text-align: center;
+	display: block;
+	margin-bottom: 6px;
+}
+.brow
+{
+	height:160px;
+	width: 100% !important;
+}
+#all_movies>div
+{
+	padding:30px;
+}
+.icon-block
+{
+	border:solid 1px lightgray;
+	padding-bottom:6px;
+	border-radius:4px;
+	cursor: pointer;
+}
+.icon-block:hover
+{
+	border:solid 1px gray;
+}
+.crow
+{
+	padding:10px;
+}
+#add_new
+{
+	font-size: 14px !important;
+}
+#add_new_box
+{
+	padding-top: 6px;
+}
+#add_new_box>div>input,#add_new_box>div>select,#update_box>div>input,#update_box>div>select
+{
+	border: solid 1px skyblue !important;
+	background-color: #fff !important;
+	color:black !important;
+	border-radius: 4px !important;
+	font-size: 14px !important;
+	padding-left: 10px !important;
+	margin-left: -2px !important;
+	font-size: 13px !important;
+}
+
+
+/*Dropdown CSS*/
+.dropdown {
+  transform: translateY(-50%);
+  margin-top: 23px;
+}
+
+.dropdown dd,
+.dropdown dt {
+  margin: 0px;
+  padding: 0px;
+}
+
+.dropdown ul {
+  margin: -1px 0 0 0;
+}
+
+.dropdown dd {
+  position: relative;
+}
+
+.dropdown a,
+.dropdown a:visited {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+  font-size: 13px;
+}
+
+.dropdown dt a {
+  display: block;
+  padding: 8px 5px 0px 10px;
+  min-height: 20px;
+  line-height: 20px;
+  overflow: hidden;
+  margin-left: -2px;
+  border: 0;
+  border:solid 1px lightgray;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dropdown dt a span,
+.multiSel span {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 3px 2px 0;
+}
+
+.dropdown dd ul {
+  border: solid 1px lightgray;
+  background-color: #fff;
+  display: none;
+  left: 0px;
+  padding: 2px 15px 2px 5px;
+  position: absolute;
+  top: 2px;
+  width: 100%;
+  list-style: none;
+  height: 100px;
+  overflow: auto;
+}
+
+.dropdown span.value {
+  display: none;
+}
+.dropdown dd ul li
+{
+	padding:3px;
+}
+.dropdown dd ul li label
+{
+	font-size: 14px !important;
+}
+
+.dropdown dd ul li a {
+  padding: 5px;
+  display: block;
+
+}
+
+.dropdown dd ul li a:hover {
+  background-color: #fff;
+}
+
+.cblack
+{
+	color:black !important;
+}
+
+.button-growth
+{
+padding:6px;
+font-size: 12px;
+border-radius: 4px;
+border: solid 1px skyblue;
+background-color: #fff; 
+display: inline-block;
+margin-top:-20px !important;
+}
+.button-growth:focus,.button-growth:hover,.button-growth>i:focus,.button-growth>i:hover
+{
+background-color: gray;
+color: white !important;    
+}
+.capitalize
+{
+	text-transform: capitalize;
+}
+
+
+.dropdown-update {
+  transform: translateY(-50%);
+  margin-top: 23px;
+}
+
+.dropdown-update dd,
+.dropdown-update dt {
+  margin: 0px;
+  padding: 0px;
+}
+
+.dropdown-update ul {
+  margin: -1px 0 0 0;
+}
+
+.dropdown-update dd {
+  position: relative;
+}
+
+.dropdown-update a,
+.dropdown-update a:visited {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+  font-size: 13px;
+}
+
+.dropdown-update dt a {
+  display: block;
+  padding: 8px 5px 0px 10px;
+  min-height: 20px;
+  line-height: 20px;
+  overflow: hidden;
+  margin-left: -2px;
+  border: 0;
+  border:solid 1px lightgray;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dropdown-update dt a span,
+.multisel-update span {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 3px 2px 0;
+}
+
+.dropdown-update dd ul {
+  border: solid 1px lightgray;
+  background-color: #fff;
+  display: none;
+  left: 0px;
+  padding: 2px 15px 2px 5px;
+  position: absolute;
+  top: 2px;
+  width: 100%;
+  list-style: none;
+  height: 100px;
+  overflow: auto;
+}
+
+.dropdown-update span.value {
+  display: none;
+}
+.dropdown-update dd ul li
+{
+	padding:3px;
+}
+.dropdown-update dd ul li label
+{
+	font-size: 14px !important;
+}
+
+.dropdown-update dd ul li a {
+  padding: 5px;
+  display: block;
+
+}
+
+.dropdown-update dd ul li a:hover {
+  background-color: #fff;
+}
+
+.picker__day,.picker__month-display>div,.picker__weekday-display,.picker__day-display>div,.picker__year-display>div,.btn-flat,.picker__select--month,.picker__select--month>option,.picker__select--year,.picker__select--year>option
+{
+	font-family: 'Open Sans',sans-serif;
+	font-size: 13px !important;
+}
